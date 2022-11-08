@@ -1,6 +1,4 @@
-
-using System.Collections.Generic;
-using TMPro;
+using Newtonsoft.Json;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -13,18 +11,7 @@ public class RecorderManager : MonoBehaviour
     private ARKitFaceSubsystem faceSubsytem;
     private ARFace face;
     private bool recording;    
-    // Unity Functions
-    // - Awake: Get ARFace object
-    // - OnEnable : Get Face Manager -> Get ARKit Subsytem -> UpdateVisibility -> OnUpdated
-    // - OnDisable : call OnUpdated
-
-    // Custom Functions
-    // - SetVisible : Set visibility of TMPRo
-    // - SetValues : Set values on TMPro
-    // - UpdateVisibilty : [Boolean]Check for faces at each frame, calls SetVisible based on boolean
-    // - OnUpdated : Calls UpdateVisibilty
-    // - OnSystemStateChanged: Handle ARSessions Event args
-
+    
     void Awake(){
         face = GetComponent<ARFace>();
     }
@@ -37,6 +24,7 @@ public class RecorderManager : MonoBehaviour
         else{
             if(frames.Count > 0){
                 // Serialize and save
+                SerializeSave.SimpleWrite(frames, "/file.json");
             }
             frames = null;
         }
@@ -48,9 +36,8 @@ public class RecorderManager : MonoBehaviour
         if(faceManager != null && faceManager?.subsystem != null){
             faceSubsytem = (ARKitFaceSubsystem)faceManager?.subsystem;
         }
-        // UpdateEnabilty();
+        
         face.updated += OnEnabled;
-        // ARSession.stateChanged += OnSystemStateChanged;
     }
 
     void OnEnabled(ARFaceUpdatedEventArgs eventArgs){
@@ -59,13 +46,8 @@ public class RecorderManager : MonoBehaviour
         frames.Add(data);
     }
     void OnDisable(){
-        
         face.updated -= OnEnabled;
-        // ARSession.stateChanged -= OnSystemStateChanged;
     }
 
-    // void OnSystemStateChanged(ARSessionStateChangedEventArgs eventArgs){
-    //     UpdateVisibilty();
-    // }
     
 }
