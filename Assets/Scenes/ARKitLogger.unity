@@ -181,7 +181,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &110462651 stripped
 RectTransform:
@@ -457,6 +457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1214507699}
   - component: {fileID: 1214507698}
+  - component: {fileID: 1214507700}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -495,8 +496,22 @@ Transform:
   m_Children:
   - {fileID: 476302995}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1214507700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214507697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caeceacb624484daf8e379c2252fd246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FacePrefab: {fileID: 8277274874400334174}
+  m_MaximumFaceCount: 1
 --- !u!1 &1412386840
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +590,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412386840}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2fadf230d1919748a9aa21d40f74619, type: 3}
   m_Name: 
@@ -917,7 +932,7 @@ PrefabInstance:
       objectReference: {fileID: 110462652}
     - target: {fileID: 8277274875640495528, guid: 4950158ede640684f86edf30d78347d6, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8277274875640495528, guid: 4950158ede640684f86edf30d78347d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -965,3 +980,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4950158ede640684f86edf30d78347d6, type: 3}
+--- !u!1 &8277274874400334174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8277274875640495538, guid: 4950158ede640684f86edf30d78347d6, type: 3}
+  m_PrefabInstance: {fileID: 8277274874400334173}
+  m_PrefabAsset: {fileID: 0}

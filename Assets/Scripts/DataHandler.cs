@@ -24,10 +24,10 @@ public class GameData
 
 [Serializable]
 public class GameSessionData{
-    private List<GameData> frames;
+    private List<GameData> frames = new List<GameData>();
 
     public void Add(GameData data){
-        this.frames.Add(data);
+        frames.Add(data);
     }
-    public int Count => this.frames.Count;
+    public int Length => frames.Count;
 }
