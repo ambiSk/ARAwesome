@@ -879,7 +879,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 1
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1114,7 +1114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8043927224523614928, guid: 5a018e0fde9473e4d98da1fb5aadebfa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8043927224523614929, guid: 5a018e0fde9473e4d98da1fb5aadebfa, type: 3}
       propertyPath: m_Pivot.x
@@ -1146,11 +1146,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8043927224523614929, guid: 5a018e0fde9473e4d98da1fb5aadebfa, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 50
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 8043927224523614929, guid: 5a018e0fde9473e4d98da1fb5aadebfa, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 20
+      value: 2732
       objectReference: {fileID: 0}
     - target: {fileID: 8043927224523614929, guid: 5a018e0fde9473e4d98da1fb5aadebfa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1199,6 +1199,18 @@ PrefabInstance:
     - target: {fileID: 8043927224523614929, guid: 5a018e0fde9473e4d98da1fb5aadebfa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043927224523614934, guid: 5a018e0fde9473e4d98da1fb5aadebfa, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043927224523614934, guid: 5a018e0fde9473e4d98da1fb5aadebfa, type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043927224523614934, guid: 5a018e0fde9473e4d98da1fb5aadebfa, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a018e0fde9473e4d98da1fb5aadebfa, type: 3}
@@ -1285,3 +1297,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f204bff625aeaf4597534b9b42fa57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugLogger: {fileID: 110462652}

@@ -18,7 +18,7 @@ public class GameData
     public GameData(NativeArray<ARKitBlendShapeCoefficient> data){
         blendshapes = new List<BlendShape>();
         foreach(ARKitBlendShapeCoefficient blendshape in data){
-            Debug.Log($"{blendshape.blendShapeLocation}: {blendshape.coefficient}\n");
+            // Debug.Log($"{blendshape.blendShapeLocation}: {blendshape.coefficient}\n");
             blendshapes.Add(new BlendShape{location = blendshape.blendShapeLocation.ToString(), coefficient = blendshape.coefficient});
         }
     }
@@ -31,7 +31,8 @@ public class GameSessionData{
     public GameSessionData(){
         frames = new List<GameData>();
     }
-    public void Add(GameData data){
+    public void AddGameData(GameData data){
+        Debug.Log("Added");
         frames.Add(data);
     }
     public int Length => frames.Count;
