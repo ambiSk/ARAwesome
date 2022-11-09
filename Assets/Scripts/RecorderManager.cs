@@ -18,15 +18,23 @@ public class RecorderManager : MonoBehaviour
     public void flagRecording(){
         recording = !recording;
         if(recording){
+            Debug.Log("Recording started");
             frames = new GameSessionData();
         }
         else{
-            if(frames.Length > 0){
+            int frameLength = frames.Length;
+            Debug.Log("Recording stopped");
+            Debug.Log(frameLength.ToString()+" Captured");
+            if(frameLength > 0){
                 // Serialize and save
                 String filename = DateTime.Now.ToString();
                 SerializeSave.SimpleWrite(frames, Application.persistentDataPath +"/file-"+filename+".json");
+                Debug.Log(frameLength.ToString()+" Captured and saved to"+ Application.persistentDataPath +"/file-"+filename+".json");
+
             }
+            Debug.Log(frameLength.ToString()+" Captured");
             frames = null;
+
         }
     }
 

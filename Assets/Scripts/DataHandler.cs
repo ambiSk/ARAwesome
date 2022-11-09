@@ -7,7 +7,7 @@ using UnityEngine.XR.ARKit;
 
 [Serializable]
 public class BlendShape{
-    public ARKitBlendShapeLocation location;
+    public string location;
     public float coefficient;
 }
 
@@ -16,16 +16,21 @@ public class GameData
 {
     public List<BlendShape> blendshapes;
     public GameData(NativeArray<ARKitBlendShapeCoefficient> data){
+        blendshapes = new List<BlendShape>();
         foreach(ARKitBlendShapeCoefficient blendshape in data){
-            blendshapes.Add(new BlendShape{location = blendshape.blendShapeLocation, coefficient = blendshape.coefficient});
+            Debug.Log($"{blendshape.blendShapeLocation}: {blendshape.coefficient}\n");
+            blendshapes.Add(new BlendShape{location = blendshape.blendShapeLocation.ToString(), coefficient = blendshape.coefficient});
         }
     }
 }
 
 [Serializable]
 public class GameSessionData{
-    private List<GameData> frames = new List<GameData>();
+    public List<GameData> frames;
 
+    public GameSessionData(){
+        frames = new List<GameData>();
+    }
     public void Add(GameData data){
         frames.Add(data);
     }
