@@ -37,3 +37,15 @@ public class GameSessionData{
     }
     public int Length => frames.Count;
 }
+public class Flag{
+    private bool recording;  
+
+    public Flag(){
+        recording=false;
+    }  
+    
+    public bool Recording{
+        get { return recording; }   // get method
+        set { recording = value; }  // set method
+  }
+}

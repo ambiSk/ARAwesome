@@ -13,16 +13,16 @@ public class RecorderManager : MonoBehaviour
     private GameSessionData frames;
     private ARKitFaceSubsystem faceSubsytem;
     private ARFace face;
-    private bool recording=false;    
-    
+    private Flag flag;
     void Awake(){
+        flag = new Flag();
         face = GetComponent<ARFace>();
     }
     
     public void flagRecording(){
-        recording = !recording;
-        if(recording){
-            Debug.Log($"Recording started + {recording.ToString()}");
+        flag.Recording = !flag.Recording;
+        if(flag.Recording){
+            Debug.Log($"Recording started {flag.Recording.ToString()}");
             frames = new GameSessionData();
         }
         else{
@@ -43,50 +43,37 @@ public class RecorderManager : MonoBehaviour
     }
 
     void OnEnable(){
+
         var faceManager = FindObjectOfType<ARFaceManager>();
         
         if(faceManager != null && faceManager?.subsystem != null){
             faceSubsytem = (ARKitFaceSubsystem)faceManager?.subsystem;
         }
-        UpdateVisibilty();
+        
+        bool temp = flag.Recording;
+        Debug.Log($"Recording set to {temp.ToString()}");
         face.updated += OnEnabled;
-        ARSession.stateChanged += OnSystemStateChanged;
     }
 
     void OnDisable(){
         face.updated -= OnEnabled;
-        ARSession.stateChanged -= OnSystemStateChanged;
+        // ARSession.stateChanged -= OnSystemStateChanged;
     }
-    public void SetValues(){
-        blendLog = "";
-        using (var blendShapes = faceSubsytem.GetBlendShapeCoefficients(face.trackableId, Allocator.Temp)){
-            foreach (var shape in blendShapes){
-                Debug.Log($"{shape.blendShapeLocation}: {shape.coefficient}\n");
-                blendLog += $"{shape.blendShapeLocation}: {shape.coefficient}\n";
-            }
-        }
-        debugLogger.text = blendLog;
-    }
-    void UpdateVisibilty(){
-        var visible = enabled && recording && (face.trackingState == TrackingState.Tracking) && (ARSession.state > ARSessionState.Ready);
-        SetVisible(visible);
-    }
-    void SetVisible(bool visible){
-        if(debugLogger==null) return;
-        debugLogger.enabled = visible;
-    }
+    
+    
+    
     void OnEnabled(ARFaceUpdatedEventArgs eventArgs){
-        UpdateVisibilty();
-        SetValues();
-        if(recording){
+        bool temp = flag.Recording;
+        
+        if(temp){
             using (var blendShapes = faceSubsytem.GetBlendShapeCoefficients(face.trackableId, Allocator.Temp)){
+                // UpdateVisibilty();
+                // SetValues();
                 GameData data =  new GameData(blendShapes);
                 frames.AddGameData(data);
             }
             
         }
     }
-    void OnSystemStateChanged(ARSessionStateChangedEventArgs eventArgs){
-        UpdateVisibilty();
-    }
+    
 }
